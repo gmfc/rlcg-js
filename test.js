@@ -1,12 +1,47 @@
 var rlcg = require('./rlcg.js');
+var fs = require('fs');
 
-function main(){
-  var rand = new rlcg();
-  for(var i=0;i<10000;i++){
-    console.log(rand.next().toString());
+
+function  normalTest(){
+  
+  var rand = new rlcg(1241234);
+  var vec = [];
+  var count =0;
+  var i = 0;
+  var n = 1000;
+  while (i<n) {
+    vec[i] = rand.next().toString(35);
+    i++;
+  }
+  i--;
+  while(i>0){
+    i--;
+    var num = rand.prev().toString(35);
+    var check = num === vec[i];
+    console.log(i+":>"+num+":"+vec[i]);
+    if(check){
+      count++;
+    }
   }
   
+  console.log(count===(n-1));
+  
 }
+
+function regress(){
+  var rand = new rlcg();
+  
+  for(var i=0;i<100;i++){
+    console.log(rand.prev().toString());
+  }
+}
+
+
+function main() {
+  normalTest();
+
+}
+
 
 
 main();
