@@ -8,7 +8,7 @@ function  normalTest(){
   var vec = [];
   var count =0;
   var i = 0;
-  var n = 1000;
+  var n = 20;
   while (i<n) {
     vec[i] = rand.next().toString(35);
     i++;
@@ -18,7 +18,9 @@ function  normalTest(){
     i--;
     var num = rand.prev().toString(35);
     var check = num === vec[i];
-    console.log(i+":>"+num+":"+vec[i]);
+
+    console.log(i+"\n:>"+num+"\n:>"+vec[i]+"\n--------------");
+
     if(check){
       count++;
     }
